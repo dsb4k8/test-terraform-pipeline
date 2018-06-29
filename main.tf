@@ -58,6 +58,6 @@ resource "aws_instance" "example" {
   ami           = "ami-f63b1193"
   instance_type = "t2.nano"
     tags {
-      Name = "instance_name_tag"
+      Name = "instance_name_tag_AUTO?"
     }
 }
