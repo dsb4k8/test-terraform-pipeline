@@ -34,4 +34,4 @@ phases:
       - echo "Post apply build"
   post_build:
     commands:
-      - echo "Nothing to do in the post_build for now"
+      - echo "Nothing to do in the post_build for now!"
