@@ -3,11 +3,3 @@ provider "aws" {
   profile    = "${var.profile}"
   region     = "${var.region}"
 }
-
-terraform { 
-   backend "s3" { 
-   bucket = "..terraform-state-software"
-   key    = "terraform.tfstate"
-   region = ""
-  }
-}
