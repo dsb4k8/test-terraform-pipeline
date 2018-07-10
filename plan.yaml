@@ -23,7 +23,7 @@ phases:
       - echo "   backend \"s3\" { " >> provider-output-backend.tf
       - echo "   bucket = \"$datapart.$region.terraform-state-software\"" >> provider-output-backend.tf
       - echo "   key    = \"terraform.tfstate\"" >> provider-output-backend.tf
-      - echo "   region = \"$region\"us-east-2" >> provider-output-backend.tf
+      - echo "   region = \"us-east-2\"" >> provider-output-backend.tf
       - echo "  }" >> provider-output-backend.tf
       - echo "}" >> provider-output-backend.tf
       - cat provider-output-backend.tf
