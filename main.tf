@@ -54,6 +54,13 @@ resource "aws_security_group" "allow_all" {
   }
 }
 
+terraform {
+  backend "s3" {
+    bucket = "..terraform-state-software"
+    key    = "terraform.tfstate"
+  }
+}
+
 resource "aws_instance" "example" {
   ami           = "ami-f63b1193"
   instance_type = "t2.nano"
