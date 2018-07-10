@@ -27,10 +27,10 @@ phases:
       - echo "  }" >> provider-output-backend.tf
       - echo "}" >> provider-output-backend.tf
       - cat provider-output-backend.tf
-      - ~/.aws/credentials && terraform init
+      - . /.aws/credentials && terraform init
   build:
     commands:
-      - ~/.aws/credentials && terraform plan
+      - . /.aws/credentials && terraform plan
       - echo "Terraform PLANNED successfully!"
 
   post_build:
