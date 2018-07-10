@@ -27,11 +27,20 @@ phases:
       - echo "  }" >> provider-output-backend.tf
       - echo "}" >> provider-output-backend.tf
       - cat provider-output-backend.tf
-      - . /tmp/aws/credentials && terraform init
+      
+    pre_build:
+    commands:
+      - export AWS_ACCESS_KEY_ID=`curl --silent http://169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.AccessKeyId'`
+      - export AWS_SECRET_ACCESS_KEY=`curl --silent http://169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.SecretAccessKey'`
+      - export AWS_SESSION_TOKEN=`curl --silent http://169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.Token'`
+
+      - export APP_VERSION=$CODEBUILD_RESOLVED_SOURCE_VERSION
+      
   build:
     commands:
+      - terraform init
       - terraform plan
-      - echo "Terraform PLANNED successfully!"
+      - echo "SUCCESS!!!!!"
 
   post_build:
     commands:
