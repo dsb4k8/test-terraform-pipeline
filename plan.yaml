@@ -28,7 +28,7 @@ phases:
       - echo "}" >> provider-output-backend.tf
       - cat provider-output-backend.tf
       #- chmod +x ~/.aws
-      - cat ~/.aws/credentials
+      - cat ~ /.aws/credentials
       - terraform init
       
   build:
