@@ -21,19 +21,17 @@ phases:
       #- cd terraform-code
       - echo "terraform { " >> provider-output-backend.tf
       - echo "   backend \"s3\" { " >> provider-output-backend.tf
-      - echo "   bucket = \"source-bucket-10033238\"" >> provider-output-backend.tf
-      - echo "   key    = \"terraform.tfstate\"" >> provider-output-backend.tf
-      - echo "   region = \"us-east-2\"" >> provider-output-backend.tf
+      - echo "   bucket = \"$datapart.$region.terraform-state-software\"" >> provider-output-backend.tf
+      - echo "   key    = \"$applicationname/terraform.tfstate\"" >> provider-output-backend.tf
+      - echo "   region = \"$region\"" >> provider-output-backend.tf
       - echo "  }" >> provider-output-backend.tf
       - echo "}" >> provider-output-backend.tf
       - cat provider-output-backend.tf
-      - terraform init
-      
+      - . /tmp/aws_cred_export.txt && terraform init
   build:
     commands:
-      - terraform plan
-      - echo "SUCCESS!!!!!"
-
+      - . /tmp/aws_cred_export.txt &&  python runterraform.js.py $region $applicationname $destroy
+      - echo "Post apply build"
   post_build:
     commands:
       - echo "Nothing to do in the post_build for now"
