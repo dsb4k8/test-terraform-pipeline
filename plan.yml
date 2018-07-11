@@ -43,14 +43,11 @@ phases:
       #- export AWS_SECRET_ACCESS_KEY=`curl --silent 169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.SecretAccessKey'`
       #- export AWS_SESSION_TOKEN=`curl --silent 169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.Token'`
       #- echo "############CURL KEYS SUCCESS!!!!!############"
-      #- terraform init
       - . /tmp/aws_cred_export.txt && terraform init
       - echo "############INIT SUCCESS!!!!!############"
       
   build:
     commands:
-      #- ~ /.aws/credentials && terraform plan
-      #- terraform plan
       - . /tmp/aws_cred_export.txt &&  python runterraform.js.py $region $applicationname $destroy
       - echo "############PLAN SUCCESS!!!!!############"
 
