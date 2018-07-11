@@ -30,7 +30,7 @@ phases:
       #- chmod +x ~/.aws
       #- cat ~ /.aws/credentials
       #- cat /Users/bronsonberwald/.aws/credentials
-      - ~ /awscreds/creds.txt && terraform init
+      - terraform init
       
   build:
     commands:
