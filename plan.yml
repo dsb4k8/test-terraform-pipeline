@@ -36,13 +36,13 @@ phases:
       - export AWS_SESSION_TOKEN=`curl --silent 169.254.170.2:80$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI | jq -r '.Token'`
       - echo "############CURL KEYS SUCCESS!!!!!############"
       #- ~ /.aws/credentials && terraform init
-      - terraform init
+      - terraform init && plan
       - echo "############INIT SUCCESS!!!!!############"
       
   build:
     commands:
       #- ~ /.aws/credentials && terraform plan
-      - terraform plan
+      #- terraform plan
       - echo "############PLAN SUCCESS!!!!!############"
 
   post_build:
