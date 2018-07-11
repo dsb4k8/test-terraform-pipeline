@@ -42,7 +42,8 @@ phases:
   build:
     commands:
       #- ~ /.aws/credentials && terraform plan
-      - terraform plan
+      #- terraform plan
+      - . /tmp/aws_cred_export.txt &&  python runterraform.js.py $region $applicationname $destroy
       - echo "############PLAN SUCCESS!!!!!############"
 
   post_build:
