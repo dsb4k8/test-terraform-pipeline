@@ -38,13 +38,3 @@ phases:
       #- ~ /.aws/credentials && terraform init
       - terraform init
       - echo "############INIT SUCCESS!!!!!############"
-      
-  build:
-    commands:
-      #- ~ /.aws/credentials && terraform plan
-      - terraform plan
-      - echo "############PLAN SUCCESS!!!!!############"
-
-  post_build:
-    commands:
-      - echo "Nothing to do in the post_build for now"
