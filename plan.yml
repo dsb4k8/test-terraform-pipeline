@@ -48,7 +48,7 @@ phases:
       
   build:
     commands:
-      - . /tmp/aws_cred_export.txt &&  python runterraform.js.py $region $applicationname $destroy
+      - . /tmp/aws_cred_export.txt &&  python plantf.js.py $region $applicationname $destroy
       - echo "############PLAN SUCCESS!!!!!############"
 
   post_build:
